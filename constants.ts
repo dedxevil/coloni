@@ -3,6 +3,9 @@ import { ThemePack } from './types';
 const CONSISTENCY_PROMPT =
   'Maintain their core facial features, ethnicity, and characteristics to ensure it is recognizably the same person. The style should be photorealistic unless specified otherwise.';
 
+export const THEME_PACK_COST = 50;
+export const DOWNLOAD_COST = 50;
+
 export const THEME_PACKS: ThemePack[] = [
   {
     title: 'Ages',
@@ -116,18 +119,47 @@ export const THEME_PACKS: ThemePack[] = [
       { label: 'Candid Laughter', prompt: `Create a studio portrait of the person in a moment of candid laughter, with soft, warm lighting. ${CONSISTENCY_PROMPT}` },
       { label: 'Thoughtful Pose', prompt: `Create a studio portrait of the person in a thoughtful, classic pose, looking away from the camera with cinematic lighting. ${CONSISTENCY_PROMPT}` },
       { label: 'Power Pose', prompt: `Create a full-body studio shot of the person in a powerful stance, dressed in business attire. ${CONSISTENCY_PROMPT}` },
+        { label: 'Editorial Fashion', prompt: `Create a high-fashion studio portrait of the person with bold styling, striking pose, and dramatic lighting. ${CONSISTENCY_PROMPT}` },
+    { label: 'Soft Glow Portrait', prompt: `Create a dreamy studio portrait of the person with soft, glowing light and a slightly blurred background. ${CONSISTENCY_PROMPT}` },
+    { label: 'Seated Elegance', prompt: `Create a studio portrait of the person seated gracefully on a chair with refined posture and moody lighting. ${CONSISTENCY_PROMPT}` },
+    { label: 'Casual Candid', prompt: `Create a relaxed studio portrait of the person in casual wear, leaning naturally against a wall with soft lighting. ${CONSISTENCY_PROMPT}` },
+    { label: 'Creative Silhouette', prompt: `Create a dramatic studio silhouette portrait of the person with a strong backlight, highlighting their outline. ${CONSISTENCY_PROMPT}` },
+    { label: 'Motion Blur Effect', prompt: `Create an artistic studio shot of the person in motion, with a controlled blur effect and creative lighting. ${CONSISTENCY_PROMPT}` },
+    { label: 'Smiling Close-Up', prompt: `Create a close-up studio portrait of the person smiling warmly with flattering soft light. ${CONSISTENCY_PROMPT}` },
     ],
   },
   {
-    title: 'Selfie with Cricketers',
-    description: 'Snap a selfie with some of the greatest cricket legends.',
-    items: [
-      { label: 'Selfie with Kohli', prompt: `Create a realistic selfie of the person with cricketer Virat Kohli on a cricket field. ${CONSISTENCY_PROMPT}` },
-      { label: 'Selfie with Rohit Sharma', prompt: `Create a realistic selfie of the person with cricketer Rohit Sharma. ${CONSISTENCY_PROMPT}` },
-      { label: 'Selfie with Sachin', prompt: `Create a realistic selfie of the person with cricket legend Sachin Tendulkar. ${CONSISTENCY_PROMPT}` },
-      { label: 'Selfie with de Villiers', prompt: `Create a realistic selfie of the person with cricketer AB de Villiers. ${CONSISTENCY_PROMPT}` },
-    ],
-  },
+  title: 'Saree Style Photoshoot',
+  description: 'Elegant portraits featuring the person in traditional saree looks with various poses and lighting.',
+  items: [
+    { label: 'Kanjeevaram Saree', prompt: `Create a studio portrait of the person wearing a luxurious Kanjeevaram silk saree with rich borders and temple jewelry. ${CONSISTENCY_PROMPT}` },
+    { label: 'Banarasi Saree', prompt: `Create a portrait of the person in an ornate Banarasi saree with golden zari work, styled with regal jewelry. ${CONSISTENCY_PROMPT}` },
+    { label: 'Kerala Kasavu Saree', prompt: `Create a portrait of the person in a traditional white and gold Kasavu saree with jasmine flowers in hair. ${CONSISTENCY_PROMPT}` },
+    { label: 'Bengali Draped Saree', prompt: `Create a studio portrait of the person in a Bengali-style draped saree with bold red border and traditional accessories. ${CONSISTENCY_PROMPT}` },
+    { label: 'Mysore Silk Saree', prompt: `Create a portrait of the person in an elegant Mysore silk saree with minimal jewelry and graceful styling. ${CONSISTENCY_PROMPT}` },
+    { label: 'Maharashtrian Nauvari', prompt: `Create a portrait of the person in a Maharashtrian Nauvari saree draped in dhoti style with traditional nath nose ring. ${CONSISTENCY_PROMPT}` },
+    { label: 'Gujarati Style Saree', prompt: `Create a studio portrait of the person in a colorful Gujarati saree draped with pallu in the front. ${CONSISTENCY_PROMPT}` },
+    { label: 'Modern Designer Saree', prompt: `Create a fashion-forward portrait of the person in a contemporary designer saree with unique cuts and styling. ${CONSISTENCY_PROMPT}` },
+    { label: 'Party Wear Saree', prompt: `Create a glamorous studio portrait of the person in a shimmery georgette saree with fashionable accessories. ${CONSISTENCY_PROMPT}` },
+    { label: 'Lehenga Saree Fusion', prompt: `Create a studio portrait of the person in a fusion lehenga saree style with modern draping and bold jewelry. ${CONSISTENCY_PROMPT}` },
+  ],
+},
+{
+  title: 'Chudidhar Style Photoshoot',
+  description: 'Studio portraits showcasing the person in traditional chudidhar outfits with various poses and moods.',
+  items: [
+     { label: 'Cotton Casual Chudidhar', prompt: `Create a portrait of the person in a simple cotton chudidhar with printed patterns for a casual daytime look. ${CONSISTENCY_PROMPT}` },
+    { label: 'Silk Party Chudidhar', prompt: `Create a portrait of the person in a silk chudidhar with embroidery and elegant dupatta styling. ${CONSISTENCY_PROMPT}` },
+    { label: 'Anarkali Style', prompt: `Create a portrait of the person in a grand Anarkali-style chudidhar with flowing fabric and detailed design. ${CONSISTENCY_PROMPT}` },
+    { label: 'Pakistani Long Kurta', prompt: `Create a portrait of the person in a Pakistani-style long kurta chudidhar with subtle embroidery. ${CONSISTENCY_PROMPT}` },
+    { label: 'Punjabi Patiala', prompt: `Create a portrait of the person in a Punjabi-style Patiala chudidhar with heavy pleated salwar and vibrant dupatta. ${CONSISTENCY_PROMPT}` },
+    { label: 'Straight-Cut Chudidhar', prompt: `Create a portrait of the person in a straight-cut chudidhar with minimal patterns and formal styling. ${CONSISTENCY_PROMPT}` },
+    { label: 'High-Slit Designer', prompt: `Create a studio portrait of the person in a trendy high-slit designer chudidhar with modern accessories. ${CONSISTENCY_PROMPT}` },
+    { label: 'Floor-Length Chudidhar', prompt: `Create a portrait of the person in a floor-length gown-style chudidhar with heavy embroidery. ${CONSISTENCY_PROMPT}` },
+    { label: 'Printed Cotton Daily Wear', prompt: `Create a casual studio portrait of the person in a lightweight printed cotton chudidhar with simple styling. ${CONSISTENCY_PROMPT}` },
+    { label: 'Festive Embroidered Chudidhar', prompt: `Create a vibrant studio portrait of the person in an embroidered festive chudidhar with bangles and earrings. ${CONSISTENCY_PROMPT}` },
+  ],
+},
   {
     title: 'Anime Styles',
     description: 'Transform into iconic anime characters or art styles.',
@@ -146,7 +178,7 @@ export const THEME_PACKS: ThemePack[] = [
       { label: 'Blue Linen', prompt: `A candid shot of this person wearing a light blue linen shirt, walking through a charming European city street. ${CONSISTENCY_PROMPT}` },
       { label: 'Beige Linen', prompt: `A stylish portrait of this person in a beige linen shirt, sitting at an outdoor cafe with a coffee. ${CONSISTENCY_PROMPT}` },
       { label: 'Yellow Linen', prompt: `A stylish portrait of this person in a yellow linen shirt, standing at a picturesque location. ${CONSISTENCY_PROMPT}` },
-      { label: 'Yellow Linen', prompt: `A stylish portrait of this person in a purple linen shirt, standing at a serene location with lovely weather. ${CONSISTENCY_PROMPT}` },
+      { label: 'Purple Linen', prompt: `A stylish portrait of this person in a purple linen shirt, standing at a serene location with lovely weather. ${CONSISTENCY_PROMPT}` },
     ],
   },
   {
@@ -177,7 +209,7 @@ export const THEME_PACKS: ThemePack[] = [
   items: [
     { label: 'North London Derby', prompt: 'Transform this person into an Arsenal footballer battling Tottenham in the North London Derby at the Emirates.' },
     { label: 'Invincibles Tribute', prompt: 'Transform this person into an Arsenal star inspired by the Invincibles era, wearing the red and white kit.' },
-    { label: 'Goal Celebration', prompt: 'Transform this person into an Arsenal footballer celebrating a winning goal in front of fans at the Emirates.' },
+    { label: 'Goal Celebration', prompt: 'Transform this person into a an Arsenal footballer celebrating a winning goal in front of fans at the Emirates.' },
     { label: 'Captain’s Moment', prompt: 'Transform this person into an Arsenal captain, leading the team with the armband.' },
     { label: 'Training Ground Focus', prompt: 'Transform this person into an Arsenal player training in full kit with a football at their feet.' },
   ],

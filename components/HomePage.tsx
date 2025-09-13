@@ -1,13 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react';
 import StarIcon from './icons/StarIcon';
 import Button from './Button';
+import GoogleLoginButton from './GoogleLoginButton';
 
 interface HomePageProps {
   onImageUpload: (file: File) => void;
   setLoading: (loading: boolean) => void;
+  isLoggedIn: boolean;
+  onLogin: () => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ onImageUpload, setLoading }) => {
+const HomePage: React.FC<HomePageProps> = ({ onImageUpload, setLoading, isLoggedIn, onLogin }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
 
@@ -43,8 +46,8 @@ const HomePage: React.FC<HomePageProps> = ({ onImageUpload, setLoading }) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
       <div className="flex items-center gap-4 mb-2">
-        <StarIcon className="w-16 h-16 text-white" />
-        <h1 className="text-8xl font-bold tracking-tighter">Coloni</h1>
+        <StarIcon className="w-16 h-16" />
+        <h1 className="text-8xl font-display tracking-tighter">Coloni</h1>
       </div>
       <p className="text-2xl text-gray-400 mb-12">color yourself</p>
       
@@ -52,29 +55,38 @@ const HomePage: React.FC<HomePageProps> = ({ onImageUpload, setLoading }) => {
         <p className="text-lg text-gray-300">
           Upload a clear, front-facing photo of yourself to begin your creative transformation. Our AI will use this image to generate stunning new versions based on the themes you choose.
         </p>
-
-        <div className="bg-gray-900 border border-gray-700 rounded-2xl p-4 text-left space-y-3">
-            <h3 className="font-bold text-lg text-center">Disclaimer</h3>
-            <p className="text-sm text-gray-400">
-                Coloni will not be responsible for the images created. The image generation is handled by Google Gemini. We do not store any of your uploaded or generated images on our servers.
-            </p>
-            <div className="flex items-center gap-2 pt-2">
-                <input
-                    type="checkbox"
-                    id="disclaimer-checkbox"
-                    checked={disclaimerAccepted}
-                    onChange={handleDisclaimerChange}
-                    className="h-4 w-4 rounded bg-gray-800 border-gray-600 text-white focus:ring-2 focus:ring-white cursor-pointer"
-                />
-                <label htmlFor="disclaimer-checkbox" className="text-sm text-gray-300 select-none cursor-pointer">
-                    I have read and accept the terms to continue.
-                </label>
+        
+        {!isLoggedIn ? (
+            <div className='pt-4'>
+                <GoogleLoginButton onClick={onLogin} />
+                <p className="text-sm text-gray-500 mt-4">New users get 50 free credits!</p>
             </div>
-        </div>
+        ) : (
+            <>
+                <div className="bg-gray-900 border border-gray-700 rounded-2xl p-4 text-left space-y-3">
+                    <h3 className="font-bold text-lg text-center">Disclaimer</h3>
+                    <p className="text-sm text-gray-400">
+                        Coloni will not be responsible for the images created. The image generation is handled by Google Gemini. We do not store any of your uploaded or generated images on our servers.
+                    </p>
+                    <div className="flex items-center gap-2 pt-2">
+                        <input
+                            type="checkbox"
+                            id="disclaimer-checkbox"
+                            checked={disclaimerAccepted}
+                            onChange={handleDisclaimerChange}
+                            className="h-4 w-4 rounded bg-gray-800 border-gray-600 text-white focus:ring-2 focus:ring-white cursor-pointer"
+                        />
+                        <label htmlFor="disclaimer-checkbox" className="text-sm text-gray-300 select-none cursor-pointer">
+                            I have read and accept the terms to continue.
+                        </label>
+                    </div>
+                </div>
 
-        <Button onClick={handleButtonClick} disabled={!disclaimerAccepted}>
-          Upload Your Photo
-        </Button>
+                <Button onClick={handleButtonClick} disabled={!disclaimerAccepted}>
+                Upload Your Photo
+                </Button>
+            </>
+        )}
       </div>
 
       <input
@@ -83,7 +95,7 @@ const HomePage: React.FC<HomePageProps> = ({ onImageUpload, setLoading }) => {
         onChange={handleFileChange}
         className="hidden"
         accept="image/png, image/jpeg, image/webp"
-        disabled={!disclaimerAccepted}
+        disabled={!disclaimerAccepted || !isLoggedIn}
       />
     </div>
   );

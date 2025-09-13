@@ -26,3 +26,9 @@ export interface GeneratedImage {
   label: string;
   base64: string | null;
 }
+
+export interface User {
+  name: string;
+  email: string;
+  credits: number;
+}
