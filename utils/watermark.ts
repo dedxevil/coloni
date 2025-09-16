@@ -26,7 +26,7 @@ export const applyWatermark = (base64Image: string): Promise<string> => {
       ctx.textBaseline = 'middle';
       
       const fontSize = 60 * scale;
-      ctx.font = `bold ${fontSize}px Sniglet`;
+      ctx.font = `${fontSize}px Sniglet`;
       ctx.fillText('Coloni', centerX, centerY + (35 * scale));
 
       // Watermark Star Icon

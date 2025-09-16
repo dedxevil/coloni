@@ -2,17 +2,21 @@
 export interface ThemeItem {
   label: string;
   prompt: string;
+  img: string;
 }
 
 export interface ThemePack {
   title: string;
   description: string;
+  cost: number;
   items: ThemeItem[];
+  photoType?: 'selfie' | 'couple';
 }
 
 export enum AppState {
   HOME,
   THEME_SELECTION,
+  UPLOAD_PHOTO,
   GENERATING,
   RESULTS,
 }

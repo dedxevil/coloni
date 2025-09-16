@@ -1,19 +1,16 @@
 
 import React, { useState, useMemo } from 'react';
-import { ThemePack, UploadedImage } from '../types';
-import { THEME_PACKS, THEME_PACK_COST } from '../constants';
-import Button from './Button';
+import { ThemePack } from '../types';
+import { THEME_PACKS } from '../constants';
 import { getGradientForText } from '../utils/color';
 import SearchIcon from './icons/SearchIcon';
 
 interface ThemeSelectionPageProps {
-  uploadedImage: UploadedImage;
   onThemeSelect: (theme: ThemePack) => void;
-  onStartOver: () => void;
   userCredits: number;
 }
 
-const ThemeSelectionPage: React.FC<ThemeSelectionPageProps> = ({ uploadedImage, onThemeSelect, onStartOver, userCredits }) => {
+const ThemeSelectionPage: React.FC<ThemeSelectionPageProps> = ({ onThemeSelect, userCredits }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredPacks = useMemo(() => {
@@ -29,21 +26,12 @@ const ThemeSelectionPage: React.FC<ThemeSelectionPageProps> = ({ uploadedImage, 
   
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto">
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-6">
-        <div className="flex items-center gap-4">
-          <img 
-            src={uploadedImage.base64} 
-            alt="Uploaded thumbnail" 
-            className="w-20 h-20 rounded-full object-cover border-2 border-gray-600"
-          />
-          <h1 className="text-3xl sm:text-4xl">Choose a Theme Pack</h1>
-        </div>
-        <Button onClick={onStartOver} variant="secondary">
-          Start Over
-        </Button>
+      <div className="text-center mb-8">
+        <h1 className="text-3xl sm:text-4xl">Choose a Theme Pack</h1>
+        <p className="text-gray-400 mt-2">Select a pack to begin your transformation.</p>
       </div>
 
-      <div className="mb-8 relative">
+      <div className="mb-8 relative max-w-lg mx-auto">
         <input
           type="text"
           value={searchTerm}
@@ -58,7 +46,7 @@ const ThemeSelectionPage: React.FC<ThemeSelectionPageProps> = ({ uploadedImage, 
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredPacks.map((pack) => {
-          const canAfford = userCredits >= THEME_PACK_COST;
+          const canAfford = userCredits >= pack.cost;
           const gradient = getGradientForText(pack.title);
 
           return (
@@ -67,7 +55,7 @@ const ThemeSelectionPage: React.FC<ThemeSelectionPageProps> = ({ uploadedImage, 
               onClick={() => canAfford && onThemeSelect(pack)}
               style={{ background: gradient }}
               className={`
-                border border-transparent rounded-2xl p-6 transition-all duration-300 ease-in-out relative text-white
+                border border-transparent rounded-2xl p-6 transition-all duration-300 ease-in-out relative text-white flex flex-col
                 ${canAfford 
                   ? 'cursor-pointer transform hover:scale-105 hover:border-white/50 hover:shadow-2xl' 
                   : 'opacity-60 cursor-not-allowed filter grayscale'
@@ -75,10 +63,27 @@ const ThemeSelectionPage: React.FC<ThemeSelectionPageProps> = ({ uploadedImage, 
               `}
             >
               <div className="absolute top-4 right-4 bg-black/50 text-white text-xs px-3 py-1 rounded-full">
-                {THEME_PACK_COST} Credits
+                {pack.cost} Credits
               </div>
               <h2 className="text-2xl mb-2">{pack.title}</h2>
-              <p className="opacity-80">{pack.description}</p>
+              <p className="opacity-80 mb-4">{pack.description}</p>
+              
+              <div className="mt-auto grid grid-cols-2 gap-2">
+                {pack.items.slice(0, 4).map((item, idx) => (
+                    <div key={idx} className="relative rounded-lg overflow-hidden group aspect-square bg-black/20">
+                        <img 
+                            src={item.img} 
+                            alt={item.label}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                            loading="lazy"
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+                            <p className="text-white text-xs text-center truncate">{item.label}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
             </div>
           );
         })}
