@@ -47,7 +47,7 @@ const DisplayImage: React.FC<DisplayImageProps> = ({ src, alt }) => {
     <img 
       src={displaySrc || ''} 
       alt={alt} 
-      className="w-full h-full object-contain"
+      className="w-full h-auto"
       onContextMenu={(e) => e.preventDefault()}
     />
   );

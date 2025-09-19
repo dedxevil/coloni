@@ -20,6 +20,126 @@ export const THEME_PACKS: ThemePack[] = [
     ],
   },
   {
+    title: 'Hand-drawn Portraits',
+    description: 'See yourself as a beautiful, artistic sketch.',
+    cost: 15,
+    items: [
+      { 
+        label: 'Charcoal Sketch', 
+        prompt: `A beautiful, artistic charcoal sketch portrait of the person, with realistic shading and texture, on textured paper. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/charcoal%20sketch/300' 
+      },
+      { 
+        label: 'Watercolor Portrait', 
+        prompt: `A vibrant and expressive watercolor portrait of the person, with soft edges and blended colors on watercolor paper. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/watercolor%20portrait/300' 
+      },
+      { 
+        label: 'Detailed Pencil Portrait', 
+        prompt: `A highly detailed and realistic pencil portrait of the person, with fine lines and intricate shading. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/detailed%20pencil/300' 
+      },
+      { 
+        label: 'Ink Line Art', 
+        prompt: `A clean and minimalist ink line art portrait of the person, focusing on elegant contours and bold lines. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/ink%20line%20art/300' 
+      },
+    ],
+  },
+   {
+    title: 'Terrible Portraits',
+    description: "Get a hilariously bad portrait of yourself, drawn by a 'talented' kid.",
+    cost: 5,
+    items: [
+      { 
+        label: "Kid's Crayon Disaster", 
+        prompt: `A hilariously bad, childish, hand-drawn crayon portrait of the person. It should look like a -year-old drew it, with scribbled colors way outside the lines, distorted features, and on a crumpled piece of paper. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/kids%20drawing/300' 
+      },
+      { 
+        label: "Ugly Sketch", 
+        prompt: ` A childlike doodle with thick black ink lines, exaggerated giant teeth and wide grins, uneven eyes, simple rectangular faces, minimal shading, and wobbly outlines. Make it look like it was sketched quickly on plain white paper with a felt-tip pen.`, 
+        img: 'https://picsum.photos/seed/ugly%20caricature/300' 
+      },
+    ],
+  },
+  {
+    title: 'DP Styles',
+    description: 'Create the perfect Display Picture for your social media profiles.',
+    cost: 25,
+    items: [
+      { 
+        label: 'Yellow Cartoon DP', 
+        prompt: `A stylized, illustrated digital avatar of the person in a modern, flat vector art style. The features should be simplified but recognizable. The background should be a solid, vibrant yellow circle. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/yellow%20cartoon%20dp/300' 
+      },
+      { 
+        label: 'Grayscale on Yellow', 
+        prompt: `A high-contrast, artistic portrait. The person should be in grayscale (black and white), set against a bold, solid yellow circular background. This creates a modern, pop-art effect. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/grayscale%20on%20yellow/300' 
+      },
+      { 
+        label: 'Black on Black', 
+        prompt: `A dramatic, low-key black and white portrait. The person should be wearing dark clothing, against a solid black background. The lighting should be moody and cinematic, creating a sense of mystery. Designed to look striking as a circular profile picture. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/black%20on%20black%20portrait/300' 
+      },
+      { 
+        label: 'Professional Headshot', 
+        prompt: `A professional corporate headshot of the person, suitable for a LinkedIn profile. The person should be wearing business attire, with soft, flattering studio lighting against a clean, neutral background. The composition should be centered and work well in a circular frame. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/professional%20headshot%20circle/300' 
+      },
+       { 
+        label: 'Neon Glow', 
+        prompt: `A vibrant, futuristic portrait of the person bathed in the glow of neon lights. The background should be dark to make the pink and blue neon colors pop. The style should be edgy and cool, perfect for a gaming or tech profile picture. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/neon%20glow%20dp/300' 
+      },
+       { 
+        label: 'Minimalist Line Art', 
+        prompt: `A clean and minimalist single-line art portrait of the person. The background should be a solid, muted pastel color circle, making the elegant black contours the main focus. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/minimalist%20line%20art%20dp/300' 
+      },
+    ],
+  },
+  {
+    title: 'Sculpted Self',
+    description: 'See yourself reimagined as a statue made of different materials.',
+    cost: 20,
+    items: [
+      { 
+        label: 'Golden Statue', 
+        prompt: `Transform the person into a polished, reflective golden statue. The statue should look majestic and ancient, with detailed metallic textures and highlights, set against a dark, dramatic museum background. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/golden%20statue/300' 
+      },
+      { 
+        label: 'Iron Sculpture', 
+        prompt: `Reimagine the person as a weathered, textured iron sculpture. The style should be rustic and strong, with visible signs of aging and rust, placed in an outdoor industrial setting. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/iron%20sculpture/300' 
+      },
+      { 
+        label: 'Ice Sculpture', 
+        prompt: `Turn the person into a translucent, intricately carved ice sculpture. The ice should be clear and sparkling, with sharp details and internal refractions of light, set in a frozen, winter landscape. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/ice%20sculpture/300' 
+      },
+      { 
+        label: 'Marble Bust', 
+        prompt: `Style the person as a classical Greek marble bust. The statue should be made of white Carrara marble with smooth, detailed carving and a serene expression, placed on a pedestal in a grand gallery. ${CONSISTENCY_PROMPT}`, 
+        img: 'https://picsum.photos/seed/marble%20bust/300' 
+      },
+    ],
+  },
+  {
+    title: 'Decades',
+    description: 'Travel through time and see yourself in different eras.',
+    cost: 25,
+    items: [
+      { label: '1950s', prompt: `Style the person with 1950s fashion and hairstyle, with a vintage film look. ${CONSISTENCY_PROMPT}`, img: 'https://picsum.photos/seed/1950s%20fashion/300' },
+      { label: '1960s', prompt: `Style the person with 1960s hippie or mod fashion, with a grainy, retro photo effect. ${CONSISTENCY_PROMPT}`, img: 'https://picsum.photos/seed/1960s%20fashion/300' },
+      { label: '1970s', prompt: `Style the person with 1970s disco fashion, big hair, and a warm, faded photograph look. ${CONSISTENCY_PROMPT}`, img: 'https://picsum.photos/seed/1970s%20fashion/300' },
+      { label: '1980s', prompt: `Style the person with 1980s new wave or rock fashion, neon colors, and a slightly blurry, VHS-style look. ${CONSISTENCY_PROMPT}`, img: 'https://picsum.photos/seed/1980s%20fashion/300' },
+      { label: '1990s', prompt: `Style the person with 1990s grunge or pop fashion, with a classic 90s film photo look. ${CONSISTENCY_PROMPT}`, img: 'https://picsum.photos/seed/1990s%20fashion/300' },
+    ],
+  },
+  {
     title: 'Ages',
     description: 'See yourself at different stages of life, from a child to your golden years.',
     cost: 20,

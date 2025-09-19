@@ -34,6 +34,7 @@ const GenerationPage: React.FC<GenerationPageProps> = ({
     try {
       const JSZip = (await import('jszip')).default;
       const zip = new JSZip();
+      const timestamp = new Date().toISOString().slice(0, 19).replace(/[-T:]/g, '');
       
       generatedImages.forEach((image) => {
           if (image.base64) {
@@ -47,7 +48,7 @@ const GenerationPage: React.FC<GenerationPageProps> = ({
       
       const link = document.createElement('a');
       link.href = URL.createObjectURL(content);
-      link.download = `${theme.title.replace(/\s/g, '_')}_pack.zip`;
+      link.download = `${theme.title.replace(/\s/g, '_')}_pack_${timestamp}.zip`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -61,10 +62,12 @@ const GenerationPage: React.FC<GenerationPageProps> = ({
   };
 
   const handleDownloadIndividually = () => {
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/[-T:]/g, '');
     generatedImages.forEach((image, index) => {
       if (image.base64) {
         setTimeout(() => {
-          downloadImage(image.base64, `${theme.title.replace(/\s/g, '_')}-${image.label.replace(/\s/g, '_')}.png`);
+          const filename = `${theme.title.replace(/\s/g, '_')}-${image.label.replace(/\s/g, '_')}_${timestamp}.png`;
+          downloadImage(image.base64, filename);
         }, index * 300);
       }
     });
@@ -111,7 +114,7 @@ const GenerationPage: React.FC<GenerationPageProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {generatedImages.map((image) => (
           <div key={image.label} className="flex flex-col gap-3">
-            <div className="w-full bg-gray-900 border-2 border-dashed border-gray-700 rounded-2xl flex items-center justify-center overflow-hidden aspect-square">
+            <div className={`w-full bg-gray-900 border-2 border-dashed border-gray-700 rounded-2xl flex items-center justify-center overflow-hidden ${!image.base64 ? 'aspect-square' : ''}`}>
               {image.base64 ? (
                 <DisplayImage src={image.base64} alt={image.label} />
               ) : (

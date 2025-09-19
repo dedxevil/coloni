@@ -48,6 +48,8 @@ const ThemeSelectionPage: React.FC<ThemeSelectionPageProps> = ({ onThemeSelect, 
         {filteredPacks.map((pack) => {
           const canAfford = userCredits >= pack.cost;
           const gradient = getGradientForText(pack.title);
+          const previewItems = pack.items.slice(0, 4);
+          const imageGridClass = previewItems.length === 1 ? 'grid-cols-1' : 'grid-cols-2';
 
           return (
             <div
@@ -68,8 +70,8 @@ const ThemeSelectionPage: React.FC<ThemeSelectionPageProps> = ({ onThemeSelect, 
               <h2 className="text-2xl mb-2">{pack.title}</h2>
               <p className="opacity-80 mb-4">{pack.description}</p>
               
-              <div className="mt-auto grid grid-cols-2 gap-2">
-                {pack.items.slice(0, 4).map((item, idx) => (
+              <div className={`mt-auto grid ${imageGridClass} gap-2`}>
+                {previewItems.map((item, idx) => (
                     <div key={idx} className="relative rounded-lg overflow-hidden group aspect-square bg-black/20">
                         <img 
                             src={item.img} 
