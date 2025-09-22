@@ -27,7 +27,7 @@ export const applyWatermark = (base64Image: string): Promise<string> => {
       
       const fontSize = 60 * scale;
       ctx.font = `${fontSize}px Sniglet`;
-      ctx.fillText('Coloni', centerX, centerY + (35 * scale));
+      ctx.fillText('Zelfy', centerX, centerY + (35 * scale));
 
       // Watermark Star Icon
       const starSize = 100 * scale;

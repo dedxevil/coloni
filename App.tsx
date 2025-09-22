@@ -23,7 +23,7 @@ const App: React.FC = () => {
   const [isConfirmCreditModalOpen, setConfirmCreditModalOpen] = useState(false);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('coloniUser');
+    const storedUser = localStorage.getItem('zelfyUser');
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setUser(parsedUser);
@@ -33,11 +33,11 @@ const App: React.FC = () => {
 
   const updateUserInStorage = (updatedUser: User) => {
     setUser(updatedUser);
-    localStorage.setItem('coloniUser', JSON.stringify(updatedUser));
+    localStorage.setItem('zelfyUser', JSON.stringify(updatedUser));
   };
 
   const handleLogin = () => {
-    const storedUser = localStorage.getItem('coloniUser');
+    const storedUser = localStorage.getItem('zelfyUser');
     if (storedUser) {
         const parsedUser = JSON.parse(storedUser)
         setUser(parsedUser);
@@ -49,7 +49,7 @@ const App: React.FC = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('coloniUser');
+    localStorage.removeItem('zelfyUser');
     setUser(null);
     resetToHome();
   };

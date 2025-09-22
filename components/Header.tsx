@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout, onBuyCredits }) => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center gap-2">
           <StarIcon className="w-8 h-8 text-white" />
-          <span className="text-2xl">Coloni</span>
+          <span className="text-2xl">Zelfy</span>
         </div>
         {user && (
           <div className="flex items-center gap-4">

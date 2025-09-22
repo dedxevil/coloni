@@ -25,7 +25,7 @@ const UploadPage: React.FC<UploadPageProps> = ({
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
 
   useEffect(() => {
-    const isAccepted = localStorage.getItem('coloniDisclaimerAccepted') === 'true';
+    const isAccepted = localStorage.getItem('zelfyDisclaimerAccepted') === 'true';
     if (isAccepted) {
       setDisclaimerAccepted(true);
     }
@@ -35,9 +35,9 @@ const UploadPage: React.FC<UploadPageProps> = ({
     const isChecked = event.target.checked;
     setDisclaimerAccepted(isChecked);
     if (isChecked) {
-      localStorage.setItem('coloniDisclaimerAccepted', 'true');
+      localStorage.setItem('zelfyDisclaimerAccepted', 'true');
     } else {
-      localStorage.removeItem('coloniDisclaimerAccepted');
+      localStorage.removeItem('zelfyDisclaimerAccepted');
     }
   };
 
@@ -85,7 +85,7 @@ const UploadPage: React.FC<UploadPageProps> = ({
               <div className="bg-gray-900 border border-gray-700 rounded-2xl p-4 text-left space-y-3">
                   <h3 className="text-lg text-center">Disclaimer</h3>
                   <p className="text-sm text-gray-400">
-                      Coloni will not be responsible for the images created. The image generation is handled by Google Gemini. We do not store any of your uploaded or generated images on our servers.
+                      Zelfy will not be responsible for the images created. The image generation is handled by Google Gemini. We do not store any of your uploaded or generated images on our servers.
                   </p>
                   <div className="flex items-center gap-2 pt-2">
                       <input

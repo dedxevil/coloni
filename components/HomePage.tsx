@@ -11,7 +11,7 @@ const HomePage: React.FC<HomePageProps> = ({ onLogin }) => {
     <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
       <div className="flex items-center gap-4 mb-2">
         <StarIcon className="w-16 h-16" />
-        <h1 className="text-8xl">Coloni</h1>
+        <h1 className="text-8xl">Zelfy</h1>
       </div>
       <p className="text-2xl text-gray-400 mb-12">color yourself</p>
       
